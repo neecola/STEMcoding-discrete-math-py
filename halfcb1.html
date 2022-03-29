@@ -1,0 +1,510 @@
+<HTML>
+<head>
+<title>Half Checkerboard Challenge (Part 1. The Basic Game)</title>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</head>
+
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+    <script>
+    var clipboard = new Clipboard('.btn');
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    </script>
+
+
+<H1><a href="https://osu.az1.qualtrics.com/jfe/form/SV_4UXG6wtb3eH4J4F">Please take this pre-survey before starting the activity!</a></H1>
+  
+<H1>Half Checkerboard Challenge (Part 1. The Basic Game)</H1>
+
+<p>The Half Checkerboard Challenge is part of the <a href="https://dmpc.sdsu.edu">San Diego Discrete Math Project Collaborative</a> curriculum. This two player game involves a half checkerboard and four checkers like the image below:
+  
+  <div align="center">
+<p><img height=600 width=300 src="halfcb1_top.png">
+  </div>
+
+<p>Unlike the game of checkers where you only move diagonally, in the half checkerboard challenge <b>you can only move the checkers downwards</b>, and each turn you can choose to move 1, 2, 3 or all 4 checkers downwards. Once all four checkers are at the bottom of the checkerboard the game is over. The player that moves the last checker to the bottom of the checkerboard wins because the next player has no move left.
+
+<p>Later we will talk about strategies for winning the game. For now let's see if we can create a simple code to represent this game.
+  
+  
+<p><H3>Step 0. Open up a one checker version of the game</H3>
+
+<p><a href="https://editor.p5js.org/ChrisOrban/sketches/IQbG-TS9M" target="_blank">Click here to open up a one checker version of the game</a>
+
+<p>Go ahead and press <img src="https://www.asc.ohio-state.edu/orban.14/physics_coding/play_button.png"> in the top left to run the code. <b><mark>Then press 1 on the keyboard!</mark></b> Your program should look like this:
+
+<div align="center">
+<p><img width=750 height=600 src="halfcb1_v0.png">
+</div>
+
+
+<p><H3>Important: Create an Account or Sign In, then click Duplicate</H3>
+
+<p>To save your work you need to create an account by clicking <b>Sign Up</b> in <b>the top right corner</b> of the screen. If you have already created an account, click "Log In" and put in your login information
+
+<p>A non-profit arts group called <a href="http://processingfoundation.org">The Processing Foundation</a> runs this site. They are nice people and they will not send you a bunch of emails for registering.
+
+<p>Before moving on, in the top left click <b><mark>click File --> Duplicate</mark></b> so that the code you are working with is on your account!
+  
+<p><H3>Objectives</H3>
+  
+<p>If the program can detect that something is wrong with your code it will show a red <img width=15 height=15 src="https://www.asc.ohio-state.edu/orban.14/stemcoding/red_x.png"> next to that objective.
+
+<p>If the program can detect that you have completed the objective it will show a green check mark <img width=15 height=15 src="https://www.asc.ohio-state.edu/orban.14/stemcoding/check_mark.png"> next to that objective.
+
+<p>But the program is not very smart and if it can't tell whether you have completed the objective it will indicate a question mark like this <img width=15 height=15 src="https://www.asc.ohio-state.edu/orban.14/stemcoding/question_mark.png"> next to that objective.
+
+<p>By the end of this activity your goal is to have green check marks next to all the objectives like this:  
+
+  <div align="center">
+    <p><img width=705 height=150 src="halfcb1_completed.png">
+      </div>
+  
+<p><b><mark>Important Note:</mark></b> You may need to zoom out to see the entire checkerboard. On most keyboards this can be done by pressing Control and minus at the same time.
+  
+<p><H3>Step 1. Look at the code </H3>
+
+<p>Here is the entire program:
+
+<pre>
+xchecker1 = 50;
+ychecker1 = 50;
+
+showaxes = false;
+
+<span style="color:green">function draw()</span><mark>{</mark>
+    
+  clearscreen(255,255,255); // white background  
+  display(); // draw checkerboard
+
+  if ((keyIsPressed == true) && (key == 1)) ychecker1 += 100;
+
+  // add code below to make sure the checkers stop at the bottom
+  
+  // add code below to end the game
+
+  fill(0,0,0); // rgb 0,0,0 means black
+  circle(xchecker1,ychecker1,50);
+  
+<mark>}</mark> // end draw() DO NOT ADD ANY CODE AFTER THIS LINE!!!
+</pre>
+
+<p>There are a couple of things to note at this point:
+
+<p><b>1.</b> The code at the very beginning before <span style="color:green">function draw()</span> only gets run once and it is run at the beginning of the code. For example, this code:
+
+<pre>
+xchecker1 = 50;
+ychecker1 = 50;
+</pre>
+
+<p>is how we set the initial x and y position of the first checker.  Later we will add variables in this section to set the initial positions of the other three checkers.
+
+<p><b>2.</b> The code within the curly brackets <mark>{}</mark> of <span style="color:green">function draw()</span> gets run over and over (and over) again. This is helpful because we want the screen to change as different things happen in the game.
+
+<p><b>3.</b> Anything after // is a comment.      <b>Comments are only to help people reading the code understand what is going on.</b> The computer doesn't do anything with the comments. In the program there are comments that label what different parts of the code are doing. There are also comments that you will use later to know where to put in code.
+
+<p><b>4.</b> The command that draws the checker is this:
+
+<pre>
+circle(xchecker1,ychecker1,50);
+</pre>
+
+<p>The variables xchecker1 and ychecker1 correspond to the x and y position of the checker. The value 50 is the diameter of the circle.
+
+  
+<p><b><span style="background-color:yellow;">Remove things from the program and see what happens!</span></b>
+
+<p>After you remove each thing, press  <img src="https://www.asc.ohio-state.edu/orban.14/physics_coding/play_button.png"> to see what the effect is. Then press Control + Z to "undo" those changes so the code you removed will reappear.
+
+  <p>Here are some things you should experiment with:
+  
+  <ul>
+    <li>What happens when you remove <code>fill(0,0,0);</code>?
+    <li>What happens when you remove <code>circle(xchecker1,ychecker1,50);</code>?
+    <li>What happens when you remove <code> if (keyIsPressed == true && key == 1) ychecker1 += 100;</code>?
+    </ul>
+
+  
+<p><H3>Step 2. Show the coordinate axes</H3>
+
+<p>There is code at the beginning of the program:
+
+<pre>
+showaxes = false;
+</pre>
+
+<p>Change this to:
+
+<pre>
+showaxes = true;
+</pre>
+
+<p>This will highlight the coordinate axes we are using in this program. <a target="_blank" href="v1/index.html">Your program should behave like this</a>
+
+  <div align="center">
+<p><img height=600 width=300 src="halfcb_axes.png">
+  </div>
+
+<p><mark><b>Compare and contrast what you see here to a typical coordinate axes that you would see in math class</b></mark>
+  
+<p><H3>Optional: Change the <span style="color:green">c</span><span style="color:red">o</span><span style="color:blue">l</span><span style="color:red;">o</span><span style="color:orange">r</span> of the checker and the background</H3>
+
+  <div align="right">
+RGB stands for <span style="color:red">red</span>, <span style="color:green">green</span>, <span style="color:blue">blue</span>. The first number in the <br>bracket is the amount of <span style="color:red">red</span>, the second is the amount of  <br><span style="color:green">green</span>, the third is the amount of <span style="color:blue">blue</span>.
+    </div>
+
+<p>If you want to you can change the color of the checker by changing fill(0,0,0); to something else. The three numbers there are for red, green and blue. Choose a number between 0 and 255.
+  
+<p>For example, this fill command will turn things blue:
+
+<pre>
+fill(0,0,255);
+</pre>
+
+<button class="btn" data-clipboard-text="fill(0,0,255);">
+    Copy code to clipboard                                                     
+</button>
+
+<p>You can also change the background color by changing this line of code:
+
+<pre>
+  clearscreen(255,255,255); // white background    
+</pre>
+
+<p>to this:
+
+<pre>
+  clearscreen(0,255,0);
+</pre>
+
+<button class="btn" data-clipboard-text="clearscreen(0,255,0);">
+    Copy code to clipboard                                                     
+</button>  
+
+<p>If you make these changes you should get <a target="_blank" href="v1_color/index.html">a blue checker on a green checkerboard</a>
+
+<p>To pick out your own rgb colors a helpful thing to do is to  <a href="https://www.google.com/search?sxsrf=ALeKk01GldqGaL0nTFZ_QKiPQb73GM15iw%3A1607546504092&source=hp&ei=iDbRX_nKAsjKtQb1_IaABA&q=color+picker&oq=color+picker&gs_lcp=CgZwc3ktYWIQAzIICAAQsQMQyQMyAggAMgUIABCxAzICCAAyBQgAELEDMgUIABCxAzIFCAAQsQMyCAgAELEDEIMBMggIABCxAxCDATICCAA6BAgjECc6BQgAEJECOggILhCxAxCDAToOCC4QsQMQgwEQxwEQowI6CAgAEMkDEJECOgUILhCRAjoFCC4QsQM6CwguELEDEMcBEKMCOggILhDHARCvAToCCC46BwgAELEDEApQtQFY6Q1gmg9oAHAAeACAAZMBiAG_CpIBBDIuMTCYAQCgAQGqAQdnd3Mtd2l6&sclient=psy-ab&ved=0ahUKEwj5rtWy4cHtAhVIZc0KHXW-AUAQ4dUDCAg&uact=5">go to google and search on "color picker"</a>  Pick whatever colors you want. Have fun!
+  
+<p><H3>Step 3. Add three more checkers</H3>
+
+<p>In the half checkerboard challenge there are not one but four checkers. Our program only has one checker so far.
+  
+<p>This will involve making the following changes to your code:
+  
+<p><b>1. Add variables to the beginning of the code for the other checkers</b>
+
+<p>Specifically you need to define <code>xchecker2</code>, <code>ychecker2</code>, <code>xchecker3</code>, <code>ychecker3</code>, <code>xchecker4</code> and <code>ychecker4</code> at the beginning of your code similar to how <code>xchecker1</code> and <code>ychecker1</code> are defined like this:
+
+<pre>
+xchecker1 = 50;
+ychecker1 = 50;
+</pre>
+
+<p>Your job is to select the other variables so that the three other checkers have the correct starting position.
+
+<p><b>2. Add circles for checker 2, 3 and 4</b>
+
+<p>Towards the end of the code there is this line:
+
+<pre>
+  circle(xchecker1,ychecker1,50);
+</pre>
+
+<p>You need to add three more lines of code like this so all four checkers appear on screen
+
+<p>At this point <a target="_blank" href="v2/index.html">your program should behave like this</a>
+
+  <div align="center">
+<p><img height=600 width=300 src="halfcb1_4checkers.png">
+  </div>
+  
+<p><b>3. Make sure all the checkers can move!</b>
+
+<p>An important part of the game is making sure all four checkers can move. The following code causes the first checker to move when the "1" key is pressed on the keyboard:
+
+<pre>
+  if ((keyIsPressed == true) && (key == 1)) ychecker1 += 100;
+</pre>
+
+<p><b>Do not modify this line of code!</b> Instead, add another line of code below it and change the numbers so that it is for the 2nd checker. Then do this again for the 3rd and 4th checker.
+  
+<p>Ultimately, <a target="_blank" href="v3/index.html">your program should behave like this</a>
+
+<p><b>Note:</b> You can set <code>showaxes = false;</code> now or you can leave it as <code>showaxes = true;</code>  It is up to you!
+  
+<p><H3>Step 4. Learn about <span style="color: #2dc26b;"><em>if statements</em></span> </H3>
+
+<p>In the next step we are going to add some code to end the game when all four checkers are at the bottom of the screen.
+
+<p>There are many different ways to use <span style="color: #2dc26b;"><em>if statements</em></span> in your code. The following are some examples of <span style="color: #2dc26b;"><em>if statements</em></span> that are a mixture of words and code.
+
+<p><b>Example #1</b>
+
+<pre>
+  if ( time left before school begins < 10 minutes ) {
+    print("Go to school");
+  }
+</pre>
+
+<p>This is a pretty simple example. <span style="color: #2dc26b;"><em>If</em></span> the time left before school begins is less than 10 minutes <span style="color: #2dc26b;"><em>then</em></span> you'd better go to school.
+
+<p>But there are situations when the time left before school begins is less than 10 minutes but you shouldn't go to school... 
+
+<p><b>Example #2</b>
+
+<pre>
+  if ( (time left before school begins < 10 minutes) && (weekday == true) ) {
+     print("Go to school");
+  }
+</pre>
+
+<p>With this <span style="color: #2dc26b;"><em>if statement</em></span> we are using <em><span style="color: #3598db;">&&</span></em> which is a symbol that means "<em><span style="color: #3598db;">and</span></em>". So the <span style="color: #2dc26b;"><em>if</em></span> statement above means that <span style="color: #2dc26b;"><em>if</em></span> the time left before school begins is less than 10 minutes and it is a weekday <span style="color: #2dc26b;"><em>then</em></span> go to school.
+
+<p>The <em><span style="color: #3598db;">&&</span></em> symbol actually appears earlier in our program in this line of code:
+
+<pre>
+  if ((keyIsPressed == true) && (key == 1)) ychecker1 += 100;
+</pre>
+
+<p>This code means: <span style="color: #2dc26b;"><em>if</em></span> a key is pressed and that key is 1 <span style="color: #2dc26b;"><em>then</em></span> change the y position of checker 1 by 100
+  
+<p><b>Example #3</b>
+  
+<p>Let's make our <span style="color: #2dc26b;"><em>if statement</em></span> a little bit more complex. After all, there are situations when it is a weekday and the time left before school begins is less than 10 minutes but you shouldn't go to school...
+  
+<pre>
+  if ( (time left before school begins < 10 minutes) && (weekday == true) && (issummer == false)) {
+    print("Go to school");
+  }
+</pre>
+  
+<p>Now we are using two <em><span style="color: #3598db;">&</span></em> symbols in one <span style="color: #2dc26b;"><em>if statement</em></span>. The statement reads: <span style="color: #2dc26b;"><em>if</em></span> there is less than 10 minutes remaining before school starts and it is a weekday and it is not the summer time, <span style="color: #2dc26b;"><em>then</em></span> go to school.
+
+<p>You can use even more than two <em><span style="color: #3598db;">&</span></em> symbols inside of an <span style="color: #2dc26b;"><em>if</em></span> statement if you need to. For example, go to school if the time remaining is short and a weekday and it is not summer and you are feeling well and it is not a pandemic and it is not a snow day, etc.
+
+<p><b>Fun fact:</b> When there is only one instruction for the "<span style="color: #2dc26b;"><em>then</em></span>" part of the <span style="color: #2dc26b;"><em>if statement</em></span> you don't need curly brackets {}. For example this code:
+
+<pre>
+  if ( time left before school begins < 10 minutes ) {
+    print("Go to school");
+  }
+</pre>
+
+<p>is equivalent to this code:
+
+<pre>
+  if ( time left before school begins < 10 minutes )  print("Go to school");
+</pre>
+
+<p>This code only takes up one line instead of three. That is the only difference.
+
+<p>When there is more than one instruction for the "<span style="color: #2dc26b;"><em>then</em></span>" part of the <span style="color: #2dc26b;"><em>if statement</em></span>, this does not work and you do have to use the curly brackets {}
+  
+<p>You may have noticed that this part of the code already uses the  approach without curly brackets:
+
+<pre>
+  if ((keyIsPressed == true) && (key == 1)) ychecker1 += 100;
+</pre>
+
+<p>The choice not to use curly brackets here was simply to make the program a little bit shorter and easier to read. 
+
+<p><H3>Step 5. Add if statements to make sure the checkers stop at the bottom</H3>
+
+<p>If you run <a target="_blank" href="v3/index.html">the program at the end of Step 3</a> you may notice that the checkers can go below the bottom of the screen if you keep pressing the number keys. This is not how the game is supposed to work. We need all four checkers to stay at the bottom of the screen even if the user keeps pressing the arrow keys.
+
+<p>There is a comment in the code that suggests a place to add code to prevent this from happening:
+
+<pre>
+  <b><mark>// add code below to make sure the checkers stop at the bottom</mark></b>
+</pre>
+
+<p>You will need to add <b>multiple lines</b> of code to make sure all four checkers stop at the bottom of the screen. Here is a hint for the if statement for the first checker:
+
+<pre>
+  if ( ychecker1 <mark>><==?</mark>  <mark>????</mark> )  ychecker1 = <mark>????</mark>;
+</pre>
+
+<p>Your job is to figure out whether you should use a greater than (>), greater than or equals (>=), less than (<), less than or equals (<=), or equals (==) in that place and what numbers should be used in place of the <mark>????</mark>
+
+<p>Try to make your code <a target="_blank" href="v4/index.html">behave like this</a>. If you press 1, 2, 3 and 4 repeatedly eventually all your checkers will end up at the bottom like this:
+
+  <div align="center">
+<p><img height=600 width=300 src="halfcb1_bottom.png">
+  </div>
+
+<p>Feel free to experiment with different possibilities for the if statement! There is no penalty for guessing!
+					       
+<p><H3>Step 6. Add an <span style="color: #2dc26b;"><em>if statement</em></span> to end the game</H3>
+
+<p>Now we need to make sure the program ends when all four of the checkers are at the bottom of the screen.
+  
+<p>There is a comment in the code that suggests a place to do this:
+
+<pre>
+ // add code below to end the game
+</pre>
+  
+<p>Here is some code that you can add below that comment to make the game end:
+  
+<pre>
+  if ( <mark>????????????????????????????</mark> ) {
+    fill(0,0,0); // rgb 0,0,0 means black
+    drawText('Game Over!',135,350);
+    exit();
+  }
+</pre>
+
+<button class="btn" data-clipboard-text="  if ( ????????????????????????????) {
+    fill(0,0,0); // rgb 0,0,0 means black
+    drawText('Game Over!',135,350);
+    exit();
+  }">
+    Copy code to clipboard                                                     
+</button>  
+
+<p>Your job is to figure out what to put in place of the <mark>???????????????</mark> to get the game to end correctly when all four checkers are at the bottom <a target="_blank" href="v5/index.html">like in this example</a>
+
+  <div align="center">
+<p><img height=600 width=300 src="halfcb1_gameover.png">
+  </div>
+
+
+
+<p><b>Question:</b> Below is <b><span style="background-color: #e03e2d;">THE WRONG CODE</em></span></b> to end the game:
+
+<pre>
+  if ( ychecker1 = ychecker2 = ychecker3 = ychecker4 = 600 ) {
+    fill(0,0,0); // rgb 0,0,0 means black
+    drawText('Game Over!',135,350);
+    exit();
+  }
+</pre>
+
+<button class="btn" data-clipboard-text="  if ( ychecker1 = ychecker2 = ychecker3 = ychecker4 = 600 ) {
+    fill(0,0,0); // rgb 0,0,0 means black
+    drawText('Game Over!',135,350);
+    exit();
+  }">
+    Copy code to clipboard                                                     
+</button>  
+
+<p><mark><b>What happens when you put this in the program? What is wrong with this code that makes it not end the game correctly?</b></mark>
+
+<p><H3>Step 7. Have fun!</H3>
+
+<p><span style="background-color:yellow"><b>At this point you should have all green check marks! Yay!</b></span>
+
+<p>Now you should have a working half checkerboard challenge. It is important to play the game with a friend to start thinking about what the optimal strategy might be.
+
+<p><H3>Challenge: Give the checkers a random y position</H3>
+
+<p>To make the game more interesting, the players are supposed to put down the checkers at random y positions at the beginning of the game <a target="_blank" href="v6/index.html">like in this example</a>
+
+<p>The code behind the example uses the <a href="https://p5js.org/reference/#/p5/random">random</a> function.
+
+<p>As you experiment with using the <code>random</code> function, push <img src="https://www.asc.ohio-state.edu/orban.14/physics_coding/play_button.png"> in the top left corner to see the different values that the random function will produce.
+
+<p>There are four different ways to use the random function:
+
+<p><b>Example #1. <code>random()</code></b>
+
+<pre>
+ychecker1 = random();
+print(ychecker1); // write the value to screen
+</pre>
+
+<button class="btn" data-clipboard-text="ychecker1 = random();
+print(ychecker1);  // write the value to screen">
+    Copy code to clipboard                                                     
+</button>  
+
+<p>The code above will give <code>ychecker1</code> a random DECIMAL NUMBER between 0 and 1. This is not so useful because <code>ychecker1</code> needs to be some random integer between 0 and 800, but you could use <code>random()</code> in combination with other operations (addition, subtraction, multiplication, etc.) to get something that does work like <a target="_blank" href="v6/index.html">the example</a>
+
+<p><b>Advice: Use ceil or floor</b> Consider using <code>ceil</code> or <code>floor</code> to round decimal numbers up or down to the nearest integer.
+
+<p><code>ceil</code> will always round up to the nearest integer, for example, <code>ceil(9.03)</code> will give the integer value 10
+
+<p><code>floor</code> will always round down to the nearest integer, for example, <code>floor(9.03)</code> will give the integer value 9
+
+<p><b>Example #2. <code>random(value)</code></b>
+
+<pre>
+ychecker1 = random(50);
+print(ychecker1); // write the value to screen
+</pre>
+
+<button class="btn" data-clipboard-text="ychecker1 = random(50);
+print(ychecker1); // write the value to screen">
+    Copy code to clipboard                                                     
+</button>  
+
+<p>The code above will give <code>ychecker1</code> a random DECIMAL NUMBER between 0 and 50. This is not really what we want, but it could be modified or used with other operations (addition, subtraction, multiplication, ceil, floor, etc.) to get something that does work like <a target="_blank" href="v6/index.html">the example</a>
+
+<p><b>Example #3. <code>random( minvalue, maxvalue)</code></b>
+
+<pre>
+ychecker1 = random(10,50);
+print(ychecker1); // write the value to screen
+</pre>
+
+<button class="btn" data-clipboard-text="ychecker1 = random(10,50);
+print(ychecker1); // write the value to screen">
+    Copy code to clipboard                                                     
+</button>  
+
+<p>The code above will give <code>ychecker1</code> a random DECIMAL NUMBER between 10 and 50. This is not really what we want, but it could be modified or used with other operations (addition, subtraction, multiplication, ceil, floor, etc.) to get something that does work like <a target="_blank" href="v6/index.html">the example</a>
+
+<p><b>Example #4. <code>random([arrayval1,arrayval2,arrayval3,...])</code></b>
+
+<pre>
+ychecker1 = random([1,2,4]);
+print(ychecker1); // write the value to screen
+</pre>
+
+<button class="btn" data-clipboard-text="ychecker1 = random([1,2,4]);
+print(ychecker1); // write the value to screen">
+    Copy code to clipboard                                                     
+</button>  
+
+<p>The code above will randomly assign <code>ychecker1</code> either the value 1, 2 or 4. This is not really what we want, but you could modify the expression and change the values 1,2 and 4 to something more useful. You can also add values. For example <code>random([1,2,4,6,9])</code> would randomly select either 1,2,4,6 or 9.
+
+<p>As a reminder, the goal is to configure the program <a target="_blank" href="v6/index.html">behave like this example</a>
+
+
+<p><H3><span style="background-color:yellow"><b>How to get full credit on this assignment!!!</b></span></H3>
+
+<p><b>0. Take the pre-survey</b>
+
+<p>Make sure you take the <a href="https://osu.az1.qualtrics.com/jfe/form/SV_4UXG6wtb3eH4J4F">the pre-survey at the beginning of this activity</a>  in order to tell us about yourself</a>
+
+<p><b>1. Complete Steps 1-7</b>
+
+<p>Make sure your program <a target="_blank" href="v5/index.html">behaves like it does at this link</a> You should be able to get all green check marks by the end of Step 7. If you are having trouble ask another student or the teacher for advice.
+
+<p><b>2. Answer all the questions in questions.js</b>
+
+<p>Getting the code to work is only part of the task of this activity. <span style="background-color:yellow"><b>There are various reflection questions in questions.js that you should answer!</b></span>
+
+<p><b>3. The Challenges</b>
+
+<p>There are a few challenges in this activity including <a target="_blank" href="v1_color/index.html">changing the colors in the program</a> and <a target="_blank" href="v6/index.html">giving the checkers a random initial position</a> <span style="background-color:yellow"><b>Ask your teacher if they want you to do any of the challenges</b></span> If they say no you can still do them just for fun!
+
+<p><b>4. Submit your code</b>
+
+<p>Submit your code to your teacher before the deadline so they can view it and give you feedback. Talk to your teacher if you are not sure how to do this.
+
