@@ -43,7 +43,7 @@
   
 <p><H3>Step 0. Open up a one checker version of the game</H3>
 
-<p><a href="https://editor.p5js.org/ChrisOrban/sketches/IQbG-TS9M" target="_blank">Click here to open up a one checker version of the game</a>
+<p><a href="https://editor.p5js.org/marrocu.1/sketches/KCvEZTyRB" target="_blank">Click here to open up a one checker version of the game</a>
 
 <p>Go ahead and press <img src="https://www.asc.ohio-state.edu/orban.14/physics_coding/play_button.png"> in the top left to run the code. <b><mark>Then press 1 on the keyboard!</mark></b> Your program should look like this:
 
@@ -81,47 +81,47 @@
 <p>Here is the entire program:
 
 <pre>
-xchecker1 = 50;
-ychecker1 = 50;
+xchecker1 = 50
+ychecker1 = 50
 
-showaxes = false;
+showaxes = False
 
-<span style="color:green">function draw()</span><mark>{</mark>
+<span style="color:green">def draw():
     
-  clearscreen(255,255,255); // white background  
-  display(); // draw checkerboard
+  clearscreen(255,255,255) # white background  
+  display() # draw checkerboard
 
-  if ((keyIsPressed == true) && (key == 1)) ychecker1 += 100;
+  if (keyIsPressed == True and key == '1'): ychecker1 += 100
 
-  // add code below to make sure the checkers stop at the bottom
+  # add code below to make sure the checkers stop at the bottom
   
-  // add code below to end the game
+  # add code below to end the game
 
-  fill(0,0,0); // rgb 0,0,0 means black
-  circle(xchecker1,ychecker1,50);
+  fill(0,0,0) # rgb 0,0,0 means black
+  circle(xchecker1,ychecker1,50)
   
-<mark>}</mark> // end draw() DO NOT ADD ANY CODE AFTER THIS LINE!!!
+# end draw() DO NOT ADD ANY CODE AFTER THIS LINE!!!
 </pre>
 
 <p>There are a couple of things to note at this point:
 
-<p><b>1.</b> The code at the very beginning before <span style="color:green">function draw()</span> only gets run once and it is run at the beginning of the code. For example, this code:
+<p><b>1.</b> The code at the very beginning before <span style="color:green">def draw()</span> only gets run once and it is run at the beginning of the code. For example, this code:
 
 <pre>
-xchecker1 = 50;
-ychecker1 = 50;
+xchecker1 = 50
+ychecker1 = 50
 </pre>
 
 <p>is how we set the initial x and y position of the first checker.  Later we will add variables in this section to set the initial positions of the other three checkers.
 
-<p><b>2.</b> The code within the curly brackets <mark>{}</mark> of <span style="color:green">function draw()</span> gets run over and over (and over) again. This is helpful because we want the screen to change as different things happen in the game.
+<p><b>2.</b> The code indented (spaced forward) below <span style="color:green">def draw():</span> gets run over and over (and over) again. This is helpful because we want the screen to change as different things happen in the game.
 
-<p><b>3.</b> Anything after // is a comment.      <b>Comments are only to help people reading the code understand what is going on.</b> The computer doesn't do anything with the comments. In the program there are comments that label what different parts of the code are doing. There are also comments that you will use later to know where to put in code.
+<p><b>3.</b> Anything after # is a comment.      <b>Comments are only to help people reading the code understand what is going on.</b> The computer doesn't do anything with the comments. In the program there are comments that label what different parts of the code are doing. There are also comments that you will use later to know where to put in code.
 
 <p><b>4.</b> The command that draws the checker is this:
 
 <pre>
-circle(xchecker1,ychecker1,50);
+circle(xchecker1,ychecker1,50)
 </pre>
 
 <p>The variables xchecker1 and ychecker1 correspond to the x and y position of the checker. The value 50 is the diameter of the circle.
@@ -136,7 +136,7 @@ circle(xchecker1,ychecker1,50);
   <ul>
     <li>What happens when you remove <code>fill(0,0,0);</code>?
     <li>What happens when you remove <code>circle(xchecker1,ychecker1,50);</code>?
-    <li>What happens when you remove <code> if (keyIsPressed == true && key == 1) ychecker1 += 100;</code>?
+    <li>What happens when you remove <code> if (keyIsPressed == True and key == '1'): ychecker1 += 100</code>?
     </ul>
 
   
@@ -145,16 +145,16 @@ circle(xchecker1,ychecker1,50);
 <p>There is code at the beginning of the program:
 
 <pre>
-showaxes = false;
+showaxes = False
 </pre>
 
 <p>Change this to:
 
 <pre>
-showaxes = true;
+showaxes = True
 </pre>
 
-<p>This will highlight the coordinate axes we are using in this program. <a target="_blank" href="v1/index.html">Your program should behave like this</a>
+<p>This will highlight the coordinate axes we are using in this program. Make sure capitalization is correct, as it is very important! <a target="_blank" href="v1/index.html">Your program should behave like this</a>
 
   <div align="center">
 <p><img height=600 width=300 src="halfcb_axes.png">
@@ -168,31 +168,31 @@ showaxes = true;
 RGB stands for <span style="color:red">red</span>, <span style="color:green">green</span>, <span style="color:blue">blue</span>. The first number in the <br>bracket is the amount of <span style="color:red">red</span>, the second is the amount of  <br><span style="color:green">green</span>, the third is the amount of <span style="color:blue">blue</span>.
     </div>
 
-<p>If you want to you can change the color of the checker by changing fill(0,0,0); to something else. The three numbers there are for red, green and blue. Choose a number between 0 and 255.
+<p>If you want to you can change the color of the checker by changing fill(0,0,0) to something else. The three numbers there are for red, green and blue. Choose a number between 0 and 255.
   
 <p>For example, this fill command will turn things blue:
 
 <pre>
-fill(0,0,255);
+fill(0,0,255)
 </pre>
 
-<button class="btn" data-clipboard-text="fill(0,0,255);">
+<button class="btn" data-clipboard-text="fill(0,0,255)">
     Copy code to clipboard                                                     
 </button>
 
 <p>You can also change the background color by changing this line of code:
 
 <pre>
-  clearscreen(255,255,255); // white background    
+  clearscreen(255,255,255) # white background    
 </pre>
 
 <p>to this:
 
 <pre>
-  clearscreen(0,255,0);
+  clearscreen(0,255,0)
 </pre>
 
-<button class="btn" data-clipboard-text="clearscreen(0,255,0);">
+<button class="btn" data-clipboard-text="clearscreen(0,255,0)">
     Copy code to clipboard                                                     
 </button>  
 
@@ -211,8 +211,8 @@ fill(0,0,255);
 <p>Specifically you need to define <code>xchecker2</code>, <code>ychecker2</code>, <code>xchecker3</code>, <code>ychecker3</code>, <code>xchecker4</code> and <code>ychecker4</code> at the beginning of your code similar to how <code>xchecker1</code> and <code>ychecker1</code> are defined like this:
 
 <pre>
-xchecker1 = 50;
-ychecker1 = 50;
+xchecker1 = 50
+ychecker1 = 50
 </pre>
 
 <p>Your job is to select the other variables so that the three other checkers have the correct starting position.
@@ -222,7 +222,7 @@ ychecker1 = 50;
 <p>Towards the end of the code there is this line:
 
 <pre>
-  circle(xchecker1,ychecker1,50);
+  circle(xchecker1,ychecker1,50)
 </pre>
 
 <p>You need to add three more lines of code like this so all four checkers appear on screen
@@ -238,14 +238,14 @@ ychecker1 = 50;
 <p>An important part of the game is making sure all four checkers can move. The following code causes the first checker to move when the "1" key is pressed on the keyboard:
 
 <pre>
-  if ((keyIsPressed == true) && (key == 1)) ychecker1 += 100;
+  if (keyIsPressed == True and key == '1'): ychecker1 += 100;
 </pre>
 
 <p><b>Do not modify this line of code!</b> Instead, add another line of code below it and change the numbers so that it is for the 2nd checker. Then do this again for the 3rd and 4th checker.
   
 <p>Ultimately, <a target="_blank" href="v3/index.html">your program should behave like this</a>
 
-<p><b>Note:</b> You can set <code>showaxes = false;</code> now or you can leave it as <code>showaxes = true;</code>  It is up to you!
+<p><b>Note:</b> You can set <code>showaxes = False</code> now or you can leave it as <code>showaxes = True</code>  It is up to you!
   
 <p><H3>Step 4. Learn about <span style="color: #2dc26b;"><em>if statements</em></span> </H3>
 
@@ -256,9 +256,9 @@ ychecker1 = 50;
 <p><b>Example #1</b>
 
 <pre>
-  if ( time left before school begins < 10 minutes ) {
-    print("Go to school");
-  }
+  if ( time left before school begins < 10 minutes ):
+    print("Go to school")
+  
 </pre>
 
 <p>This is a pretty simple example. <span style="color: #2dc26b;"><em>If</em></span> the time left before school begins is less than 10 minutes <span style="color: #2dc26b;"><em>then</em></span> you'd better go to school.
@@ -268,9 +268,9 @@ ychecker1 = 50;
 <p><b>Example #2</b>
 
 <pre>
-  if ( (time left before school begins < 10 minutes) && (weekday == true) ) {
-     print("Go to school");
-  }
+  if ( (time left before school begins < 10 minutes) and (weekday == True) ):
+     print("Go to school")
+  
 </pre>
 
 <p>With this <span style="color: #2dc26b;"><em>if statement</em></span> we are using <em><span style="color: #3598db;">&&</span></em> which is a symbol that means "<em><span style="color: #3598db;">and</span></em>". So the <span style="color: #2dc26b;"><em>if</em></span> statement above means that <span style="color: #2dc26b;"><em>if</em></span> the time left before school begins is less than 10 minutes and it is a weekday <span style="color: #2dc26b;"><em>then</em></span> go to school.
@@ -278,7 +278,7 @@ ychecker1 = 50;
 <p>The <em><span style="color: #3598db;">&&</span></em> symbol actually appears earlier in our program in this line of code:
 
 <pre>
-  if ((keyIsPressed == true) && (key == 1)) ychecker1 += 100;
+  if (keyIsPressed == True and key == '1') ychecker1 += 100
 </pre>
 
 <p>This code means: <span style="color: #2dc26b;"><em>if</em></span> a key is pressed and that key is 1 <span style="color: #2dc26b;"><em>then</em></span> change the y position of checker 1 by 100
@@ -288,40 +288,40 @@ ychecker1 = 50;
 <p>Let's make our <span style="color: #2dc26b;"><em>if statement</em></span> a little bit more complex. After all, there are situations when it is a weekday and the time left before school begins is less than 10 minutes but you shouldn't go to school...
   
 <pre>
-  if ( (time left before school begins < 10 minutes) && (weekday == true) && (issummer == false)) {
-    print("Go to school");
+  if ( (time left before school begins < 10 minutes) and (weekday == True) and (issummer == False)) {
+    print("Go to school")
   }
 </pre>
   
-<p>Now we are using two <em><span style="color: #3598db;">&</span></em> symbols in one <span style="color: #2dc26b;"><em>if statement</em></span>. The statement reads: <span style="color: #2dc26b;"><em>if</em></span> there is less than 10 minutes remaining before school starts and it is a weekday and it is not the summer time, <span style="color: #2dc26b;"><em>then</em></span> go to school.
+<p>Now we are using two <em><span style="color: #3598db;">and</span></em> keywords in one <span style="color: #2dc26b;"><em>if statement</em></span>. The statement reads: <span style="color: #2dc26b;"><em>if</em></span> there is less than 10 minutes remaining before school starts and it is a weekday and it is not the summer time, <span style="color: #2dc26b;"><em>then</em></span> go to school.
 
-<p>You can use even more than two <em><span style="color: #3598db;">&</span></em> symbols inside of an <span style="color: #2dc26b;"><em>if</em></span> statement if you need to. For example, go to school if the time remaining is short and a weekday and it is not summer and you are feeling well and it is not a pandemic and it is not a snow day, etc.
+<p>You can use even more than two <em><span style="color: #3598db;">and</span></em> keywords inside of an <span style="color: #2dc26b;"><em>if</em></span> statement if you need to. For example, go to school if the time remaining is short and a weekday and it is not summer and you are feeling well and it is not a pandemic and it is not a snow day, etc.
 
-<p><b>Fun fact:</b> When there is only one instruction for the "<span style="color: #2dc26b;"><em>then</em></span>" part of the <span style="color: #2dc26b;"><em>if statement</em></span> you don't need curly brackets {}. For example this code:
+<p><b>Fun fact:</b> When there is only one instruction for the "<span style="color: #2dc26b;"><em>then</em></span>" part of the <span style="color: #2dc26b;"><em>if statement</em></span> you don't need to go to a new line and indent the code. For example this code:
 
 <pre>
-  if ( time left before school begins < 10 minutes ) {
-    print("Go to school");
-  }
+  if ( time left before school begins < 10 minutes ):
+    print("Go to school")
+  
 </pre>
 
 <p>is equivalent to this code:
 
 <pre>
-  if ( time left before school begins < 10 minutes )  print("Go to school");
+  if ( time left before school begins < 10 minutes ):  print("Go to school")
 </pre>
 
 <p>This code only takes up one line instead of three. That is the only difference.
 
-<p>When there is more than one instruction for the "<span style="color: #2dc26b;"><em>then</em></span>" part of the <span style="color: #2dc26b;"><em>if statement</em></span>, this does not work and you do have to use the curly brackets {}
+<p>When there is more than one instruction for the "<span style="color: #2dc26b;"><em>then</em></span>" part of the <span style="color: #2dc26b;"><em>if statement</em></span>, this does not work and you do have to go to a new line and indent the instructions that you want to get executed with the if
   
-<p>You may have noticed that this part of the code already uses the  approach without curly brackets:
+<p>You may have noticed that this part of the code already uses the  approach going to a new line:
 
 <pre>
-  if ((keyIsPressed == true) && (key == 1)) ychecker1 += 100;
+  if (keyIsPressed == True and key == '1'): ychecker1 += 100
 </pre>
 
-<p>The choice not to use curly brackets here was simply to make the program a little bit shorter and easier to read. 
+<p>The choice not to go to a new line here was simply to make the program a little bit shorter and easier to read. 
 
 <p><H3>Step 5. Add if statements to make sure the checkers stop at the bottom</H3>
 
@@ -330,13 +330,13 @@ ychecker1 = 50;
 <p>There is a comment in the code that suggests a place to add code to prevent this from happening:
 
 <pre>
-  <b><mark>// add code below to make sure the checkers stop at the bottom</mark></b>
+  <b><mark># add code below to make sure the checkers stop at the bottom</mark></b>
 </pre>
 
 <p>You will need to add <b>multiple lines</b> of code to make sure all four checkers stop at the bottom of the screen. Here is a hint for the if statement for the first checker:
 
 <pre>
-  if ( ychecker1 <mark>><==?</mark>  <mark>????</mark> )  ychecker1 = <mark>????</mark>;
+  if ( ychecker1 <mark>><==?</mark>  <mark>????</mark> ):  ychecker1 = <mark>????</mark>
 </pre>
 
 <p>Your job is to figure out whether you should use a greater than (>), greater than or equals (>=), less than (<), less than or equals (<=), or equals (==) in that place and what numbers should be used in place of the <mark>????</mark>
@@ -356,23 +356,23 @@ ychecker1 = 50;
 <p>There is a comment in the code that suggests a place to do this:
 
 <pre>
- // add code below to end the game
+ # add code below to end the game
 </pre>
   
 <p>Here is some code that you can add below that comment to make the game end:
   
 <pre>
   if ( <mark>????????????????????????????</mark> ) {
-    fill(0,0,0); // rgb 0,0,0 means black
-    drawText('Game Over!',135,350);
-    exit();
+    fill(0,0,0) # rgb 0,0,0 means black
+    drawText('Game Over!',135,350)
+    exit()
   }
 </pre>
 
 <button class="btn" data-clipboard-text="  if ( ????????????????????????????) {
-    fill(0,0,0); // rgb 0,0,0 means black
-    drawText('Game Over!',135,350);
-    exit();
+    fill(0,0,0) # rgb 0,0,0 means black
+    drawText('Game Over!',135,350)
+    exit()
   }">
     Copy code to clipboard                                                     
 </button>  
@@ -389,16 +389,16 @@ ychecker1 = 50;
 
 <pre>
   if ( ychecker1 = ychecker2 = ychecker3 = ychecker4 = 600 ) {
-    fill(0,0,0); // rgb 0,0,0 means black
-    drawText('Game Over!',135,350);
-    exit();
+    fill(0,0,0) # rgb 0,0,0 means black
+    drawText('Game Over!',135,350)
+    exit()
   }
 </pre>
 
 <button class="btn" data-clipboard-text="  if ( ychecker1 = ychecker2 = ychecker3 = ychecker4 = 600 ) {
-    fill(0,0,0); // rgb 0,0,0 means black
-    drawText('Game Over!',135,350);
-    exit();
+    fill(0,0,0) # rgb 0,0,0 means black
+    drawText('Game Over!',135,350)
+    exit()
   }">
     Copy code to clipboard                                                     
 </button>  
@@ -424,12 +424,12 @@ ychecker1 = 50;
 <p><b>Example #1. <code>random()</code></b>
 
 <pre>
-ychecker1 = random();
-print(ychecker1); // write the value to screen
+ychecker1 = random()
+print(ychecker1) # write the value to screen
 </pre>
 
-<button class="btn" data-clipboard-text="ychecker1 = random();
-print(ychecker1);  // write the value to screen">
+<button class="btn" data-clipboard-text="ychecker1 = random()
+print(ychecker1)  # write the value to screen">
     Copy code to clipboard                                                     
 </button>  
 
@@ -444,12 +444,12 @@ print(ychecker1);  // write the value to screen">
 <p><b>Example #2. <code>random(value)</code></b>
 
 <pre>
-ychecker1 = random(50);
-print(ychecker1); // write the value to screen
+ychecker1 = random(50)
+print(ychecker1) # write the value to screen
 </pre>
 
-<button class="btn" data-clipboard-text="ychecker1 = random(50);
-print(ychecker1); // write the value to screen">
+<button class="btn" data-clipboard-text="ychecker1 = random(50)
+print(ychecker1) # write the value to screen">
     Copy code to clipboard                                                     
 </button>  
 
@@ -458,26 +458,26 @@ print(ychecker1); // write the value to screen">
 <p><b>Example #3. <code>random( minvalue, maxvalue)</code></b>
 
 <pre>
-ychecker1 = random(10,50);
-print(ychecker1); // write the value to screen
+ychecker1 = random(10,50)
+print(ychecker1) # write the value to screen
 </pre>
 
-<button class="btn" data-clipboard-text="ychecker1 = random(10,50);
-print(ychecker1); // write the value to screen">
+<button class="btn" data-clipboard-text="ychecker1 = random(10,50)
+print(ychecker1) # write the value to screen">
     Copy code to clipboard                                                     
 </button>  
 
 <p>The code above will give <code>ychecker1</code> a random DECIMAL NUMBER between 10 and 50. This is not really what we want, but it could be modified or used with other operations (addition, subtraction, multiplication, ceil, floor, etc.) to get something that does work like <a target="_blank" href="v6/index.html">the example</a>
 
-<p><b>Example #4. <code>random([arrayval1,arrayval2,arrayval3,...])</code></b>
+<p><b>Example #4. <code>random([listval1,listval2,listval3,...])</code></b>
 
 <pre>
-ychecker1 = random([1,2,4]);
-print(ychecker1); // write the value to screen
+ychecker1 = random([1,2,4])
+print(ychecker1) # write the value to screen
 </pre>
 
-<button class="btn" data-clipboard-text="ychecker1 = random([1,2,4]);
-print(ychecker1); // write the value to screen">
+<button class="btn" data-clipboard-text="ychecker1 = random([1,2,4])
+print(ychecker1) # write the value to screen">
     Copy code to clipboard                                                     
 </button>  
 
